@@ -1,0 +1,11 @@
+# My virtual environment
+.venv/
+
+data/
+
+# My results folder - will probably be added to github later
+results/
+
+# Python cache
+__pycache__/
+*.pyc
