@@ -1,6 +1,28 @@
 import os
 
+class JSSPInstance:
+    def __init__(self, name: str, n_jobs: int, n_machines: int, jobs: list[list[tuple[int, int]]]):
+        self.name = name
+        self.n_jobs = n_jobs
+        self.n_machines = n_machines
+        self.jobs = jobs
+
+    @property #Makes it so that method caan be called without paratheses, like an attribute
+    def n_operations(self):
+        return sum(len(job) for job in self.jobs)
+    #Method for representing the JSSPInstance object as a string
+    def __repr__(self):
+        return f"JSSPInstance(name={self.name!r}, n_jobs={self.n_jobs}, n_machines={self.n_machines}, jobs={self.jobs})"
+    
+
+
+
+
+
+
+# Function for parsing my datailes
 def parse_jssp_Dfile(file_path):
+    name = os.path.splitext(os.path.basename(file_path))[0]
     with open(file_path, 'r') as file:
         lines = [line.strip() for line in file if line.strip()] 
 
@@ -27,19 +49,26 @@ def parse_jssp_Dfile(file_path):
                 operations.append((machine, duration))
 
             jobs.append(operations)
-    return {
-        "n_jobs": n_jobs,
-        "n_machines": n_machines,
-        "jobs": jobs
-    }
+    return JSSPInstance(name=name, n_jobs=n_jobs, n_machines=n_machines, jobs=jobs)
+
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 file_path = os.path.join(script_dir, "..", "data", "la01.txt")
 print(f"Script directory: {script_dir}"
       f"File path: {file_path}")
 
-
 result = parse_jssp_Dfile(file_path)
+print(result)
+print(result.n_operations)
+
+instance = parse_jssp_Dfile(file_path)
+
+assert instance.n_jobs == 10, f"Expected 10 jobs, got {instance.n_jobs}"
+assert instance.n_machines == 5, f"Expected 5 machines, got {instance.n_machines}"
+assert len(instance.jobs) == 10, f"Expected 10 job entries, got {len(instance.jobs)}"
+assert instance.n_operations == 50, f"Expected 50 operations, got {instance.n_operations}"
+
+"""result = parse_jssp_Dfile(file_path)
 print(f"\n n_jobs: {result['n_jobs']}, n_machines: {result['n_machines']}")
 print(f"Job 0 operations: {result['jobs'][0]}")
 
@@ -47,6 +76,6 @@ print(f"Total jobs parsed: {len(result['jobs'])}")
 print(f"Job 0: {result['jobs'][0]}")
 print(f"Job 1: {result['jobs'][1]}")
 print(f"Job 8: {result['jobs'][8]}")
-#print(f"Lines: {result['lines']}!")
+#print(f"Lines: {result['lines']}!")""" # old print statements for testing parsing
 
 
