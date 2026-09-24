@@ -51,22 +51,21 @@ def parse_jssp_Dfile(file_path):
             jobs.append(operations)
     return JSSPInstance(name=name, n_jobs=n_jobs, n_machines=n_machines, jobs=jobs)
 
+if __name__ == "__main__":
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(script_dir, "..", "data", "la01.txt")
+    print(f"Script directory: {script_dir}"
+          f"File path: {file_path}")
+    result = parse_jssp_Dfile(file_path)
+    print(result)
+    print(result.n_operations)
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(script_dir, "..", "data", "la01.txt")
-print(f"Script directory: {script_dir}"
-      f"File path: {file_path}")
+    instance = parse_jssp_Dfile(file_path)
 
-result = parse_jssp_Dfile(file_path)
-print(result)
-print(result.n_operations)
-
-instance = parse_jssp_Dfile(file_path)
-
-assert instance.n_jobs == 10, f"Expected 10 jobs, got {instance.n_jobs}"
-assert instance.n_machines == 5, f"Expected 5 machines, got {instance.n_machines}"
-assert len(instance.jobs) == 10, f"Expected 10 job entries, got {len(instance.jobs)}"
-assert instance.n_operations == 50, f"Expected 50 operations, got {instance.n_operations}"
+    assert instance.n_jobs == 10, f"Expected 10 jobs, got {instance.n_jobs}"
+    assert instance.n_machines == 5, f"Expected 5 machines, got {instance.n_machines}"
+    assert len(instance.jobs) == 10, f"Expected 10 job entries, got {len(instance.jobs)}"
+    assert instance.n_operations == 50, f"Expected 50 operations, got {instance.n_operations}"
 
 """result = parse_jssp_Dfile(file_path)
 print(f"\n n_jobs: {result['n_jobs']}, n_machines: {result['n_machines']}")
