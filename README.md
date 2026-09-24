@@ -6,8 +6,8 @@ A genetic algorithm for the Job Shop Scheduling Problem (JSSP), using an operati
 chromosome encoding and a semi-active schedule-building algorithm (SBA) to decode each
 chromosome into a feasible schedule.
 
-#Group No: Group 4
-#Course: ACIT4610
+Group No: Group 4
+Course: ACIT4610
 
 ## Overview
 
@@ -55,22 +55,6 @@ JSSP-GA/
 ├── requirements.in
 ├── requirements.txt
 └── README.md
-```
-
-## ⚠ Before you submit: `data/` is not in this repository
-
-`.gitignore` currently excludes the entire `data/` folder, so the six instance files the
-scripts depend on (`la01.txt`, `la02.txt`, `la16.txt`, `la17.txt`, `la31.txt`, `la32.txt`)
-were never pushed. As it stands, a fresh clone of this repo cannot run anything — every
-script below will fail with `FileNotFoundError`, which conflicts with the assignment's
-"must be executable" requirement.
-
-**Fix, from the project root:**
-```bash
-# remove the "data/" line from .gitignore, then:
-git add data/ .gitignore
-git commit -m "Include benchmark instance data required to run the project"
-git push
 ```
 
 ## Requirements
