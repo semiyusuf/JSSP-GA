@@ -1,4 +1,4 @@
-# chromosome.py
+
 import random
 
 
