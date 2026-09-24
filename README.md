@@ -93,13 +93,13 @@ JSSP-GA/
 
 All commands are run from the project root, with the virtual environment activated.
 
-**1. Quick sanity check** — confirms parsing, population initialization, crossover, and
+**1. Quick test check** confirms parsing, population initialization, crossover, and
 mutation all produce valid chromosomes, and runs one short GA pass end-to-end:
 ```bash
 python source/testChromosomeOperator.py
 ```
 
-**2. Run the full experiment batch** — evaluates 3 categories × 3 parameter sets × 10 runs
+**2. Run the full experiment batch** evaluates 3 categories × 3 parameter sets × 10 runs
 each (this takes several minutes, mainly due to the `large` category and the `C_heavy`
 parameter set):
 ```bash
@@ -116,7 +116,7 @@ Writes `results/gantt_<instance>.png` (best schedule found using the `C_heavy` p
 set) and `results/convergence_<instance>.png` (best-so-far makespan per generation, all
 three parameter sets overlaid) for each instance.
 
-**4. Analyze results** — computes the optimality gap against known-optimal makespans and
+**4. Analyze results** computes the optimality gap against known-optimal makespans and
 summarizes by category and by parameter set (requires step 2 to have run first):
 ```bash
 python source/analysis.py
