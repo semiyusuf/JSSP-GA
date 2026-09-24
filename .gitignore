@@ -2,8 +2,8 @@
 .venv/
 
 data/
-
-
+#Ignoring the unfinished report
+.ReportFor-Assignment1.v2cleaned.pdf
 # Python cache
 __pycache__/
 *.pyc
