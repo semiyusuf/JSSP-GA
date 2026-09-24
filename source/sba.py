@@ -5,16 +5,7 @@ ScheduledOp = namedtuple("ScheduledOp", ["job", "op_index", "machine", "start", 
 
 
 def decode_semi_active(instance, chromosome):
-    """
-    Semi-active SBA: decodes an operation-based chromosome into an actual
-    schedule. For each gene (a job id), schedules that job's NEXT operation
-    at the earliest time that respects both constraints:
-      - the job's own previous operation must have finished (job_ready)
-      - the required machine must be free (machine_free)
-    Never backfills an earlier idle gap on a machine -- that's the "active"
-    variant, deferred to the backlog given the time budget.
-    Returns (schedule: list[ScheduledOp], makespan: int).
-    """
+    
     next_op_index = [0] * instance.n_jobs
     job_ready = [0] * instance.n_jobs
     machine_free = [0] * instance.n_machines
